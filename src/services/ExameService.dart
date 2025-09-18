@@ -18,11 +18,9 @@ class ExameService {
     print('📧 Notificação enviada para médico ID: $medicoId sobre novo exame: $tipoExame');
 
     // opt precisaDeImagem == true
-    if (precisaDeImagem) {
-      print('Exame requer imagem, criando imagem associada...');
-      print('Imagem criada com ID: 201 para exame ID: 101');
-      print('URL da imagem: https://exemplo.com/imagem_101.jpg');
-    }
+    print('Exame requer imagem, criando imagem associada...');
+    print('Imagem criada com ID: 201 para exame ID: 101');
+    print('URL da imagem: https://exemplo.com/imagem_101.jpg');
     
     print('✅ Exame criado com sucesso!');
   }
@@ -38,15 +36,8 @@ class ExameService {
     print('Salvando resultado...');
 
     // alt resultado == "positivo" / "negativo"
-    if (resultado.toLowerCase() == 'positivo') {
-      print('🚨 ALERTA: Resultado POSITIVO detectado para exame ID: $exameId');
-      print('📧 Notificação URGENTE enviada para médico ID: 456 - Resultado positivo requer atenção imediata');
-    } else if (resultado.toLowerCase() == 'negativo') {
-      print('✅ Resultado NEGATIVO para exame ID: $exameId');
-      print('📧 Notificação enviada para médico ID: 456 - Resultado negativo, exame normal');
-    } else {
-      print('📧 Notificação enviada para médico ID: 456 - Resultado do exame atualizado: $resultado');
-    }
+    print('🚨 ALERTA: Resultado POSITIVO detectado para exame ID: $exameId');
+    print('📧 Notificação URGENTE enviada para médico ID: 456 - Resultado positivo requer atenção imediata');
     
     print('✅ Resultado atualizado com sucesso!');
   }

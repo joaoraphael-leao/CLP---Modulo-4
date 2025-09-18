@@ -11,10 +11,9 @@ class AgendaService {
   }
 
   // Verificar se um horário está disponível
-  static bool verificarDisponibilidade(int medicoId, DateTime dataHora) {
+  static void verificarDisponibilidade(int medicoId, DateTime dataHora) {
     print('Verificando disponibilidade do horário ${dataHora.hour}:${dataHora.minute.toString().padLeft(2, '0')}...');
-    // Simulação simples - sempre disponível
-    return true;
+    print('Horário disponível: true');
   }
 
   // Marcar horário como ocupado

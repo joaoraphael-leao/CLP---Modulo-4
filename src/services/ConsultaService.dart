@@ -1,5 +1,3 @@
-import 'AgendaService.dart';
-
 class ConsultaService {
   // 🔹 2) Criar Agendamento
   // Fluxo: O paciente solicita criarAgendamento.
@@ -18,34 +16,27 @@ class ConsultaService {
     print('📝 Criando agendamento para ${dataConsulta.day}/${dataConsulta.month}/${dataConsulta.year} às ${dataConsulta.hour}:${dataConsulta.minute.toString().padLeft(2, '0')}');
 
     // opt paciente não cadastrado → criar automaticamente
-    if (pacienteId == null && nomePaciente != null) {
-      print('Paciente não cadastrado, criando automaticamente: $nomePaciente');
-      pacienteId = 123; // Mock ID
-    }
+    print('Paciente não cadastrado, criando automaticamente: $nomePaciente');
+    print('Paciente criado com ID: 123');
 
     // opt médico não cadastrado → criar automaticamente
-    if (medicoId == null && nomeMedico != null) {
-      print('Médico não cadastrado, criando automaticamente: $nomeMedico');
-      medicoId = 456; // Mock ID
-    }
+    print('Médico não cadastrado, criando automaticamente: $nomeMedico');
+    print('Médico criado com ID: 456');
 
     // alt disponível / indisponível
-    bool disponivel = AgendaService.verificarDisponibilidade(medicoId!, dataConsulta);
+    print('Verificando disponibilidade do horário...');
+    print('Horário disponível: true');
     
-    if (disponivel) {
-      print('Criando consulta no banco de dados...');
-      print('Consulta criada com ID: 789');
-      
-      // Marcar horário como ocupado
-      AgendaService.marcarHorario(medicoId, dataConsulta);
+    print('Criando consulta no banco de dados...');
+    print('Consulta criada com ID: 789');
+    
+    print('Marcando horário como ocupado...');
+    print('⏰ Horário marcado: ${dataConsulta.hour}:${dataConsulta.minute.toString().padLeft(2, '0')} para médico ID: 456');
 
-      // Enviar notificações
-      print('📧 Notificação enviada para médico sobre nova consulta');
-      print('📧 Notificação enviada para paciente sobre agendamento confirmado');
-      print('✅ Agendamento criado com sucesso!');
-    } else {
-      print('❌ Horário indisponível na agenda do médico');
-    }
+    // Enviar notificações
+    print('📧 Notificação enviada para médico sobre nova consulta');
+    print('📧 Notificação enviada para paciente sobre agendamento confirmado');
+    print('✅ Agendamento criado com sucesso!');
   }
 
   // 🔹 5) Início de Consulta

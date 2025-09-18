@@ -1,11 +1,12 @@
 class Paciente {
-  int? _idPaciente;
-  String? _nomeCompleto;        // Obrigatório - identificação do paciente
+  String? _id;
+  String? _nome;               // Obrigatório - identificação do paciente
   DateTime? _dataNascimento;    // Obrigatório - idade é importante para medicina
   String? _cpf;                 // Obrigatório - identificação única
   String? _email;              // Opcional - pode não ter email
   String? _telefone;           // Opcional - pode não ter telefone
   String? _endereco;           // Opcional - pode não ter endereço
+  bool? _internado;            // Opcional - indica se o paciente está internado
 
   // Construtor privado
   Paciente._();
@@ -16,22 +17,24 @@ class Paciente {
   }
 
   // Getters
-  int? get idPaciente => _idPaciente;
-  String? get nomeCompleto => _nomeCompleto;
+  String? get id => _id;
+  String? get nome => _nome;
   DateTime? get dataNascimento => _dataNascimento;
   String? get cpf => _cpf;
   String? get email => _email;
   String? get telefone => _telefone;
   String? get endereco => _endereco;
+  bool? get internado => _internado;
 
   // Setters
-  set idPaciente(int? value) => _idPaciente = value;
-  set nomeCompleto(String? value) => _nomeCompleto = value;
+  set id(String? value) => _id = value;
+  set nome(String? value) => _nome = value;
   set dataNascimento(DateTime? value) => _dataNascimento = value;
   set cpf(String? value) => _cpf = value;
   set email(String? value) => _email = value;
   set telefone(String? value) => _telefone = value;
   set endereco(String? value) => _endereco = value;
+  set internado(bool? value) => _internado = value;
 
   // Método para calcular idade
   int? calcularIdade() {
@@ -50,7 +53,7 @@ class Paciente {
 
   @override
   String toString() {
-    return 'Paciente{idPaciente: $_idPaciente, nomeCompleto: $_nomeCompleto, dataNascimento: $_dataNascimento, cpf: $_cpf, email: $_email, telefone: $_telefone, endereco: $_endereco}';
+    return 'Paciente{id: $_id, nome: $_nome, dataNascimento: $_dataNascimento, cpf: $_cpf, email: $_email, telefone: $_telefone, endereco: $_endereco, internado: $_internado}';
   }
 }
 
@@ -58,13 +61,13 @@ class Paciente {
 class PacienteBuilder {
   final Paciente _paciente = Paciente._();
 
-  PacienteBuilder idPaciente(int? idPaciente) {
-    _paciente._idPaciente = idPaciente;
+  PacienteBuilder id(String? id) {
+    _paciente._id = id;
     return this;
   }
 
-  PacienteBuilder nomeCompleto(String? nomeCompleto) {
-    _paciente._nomeCompleto = nomeCompleto;
+  PacienteBuilder nome(String? nome) {
+    _paciente._nome = nome;
     return this;
   }
 
@@ -93,10 +96,15 @@ class PacienteBuilder {
     return this;
   }
 
+  PacienteBuilder internado(bool? internado) {
+    _paciente._internado = internado;
+    return this;
+  }
+
   Paciente build() {
     // Validações obrigatórias
-    if (_paciente._nomeCompleto == null || _paciente._nomeCompleto!.isEmpty) {
-      throw ArgumentError('Nome completo é obrigatório');
+    if (_paciente._nome == null || _paciente._nome!.isEmpty) {
+      throw ArgumentError('Nome é obrigatório');
     }
     if (_paciente._dataNascimento == null) {
       throw ArgumentError('Data de nascimento é obrigatória');

@@ -1,74 +1,94 @@
 import '../models/Medico.dart';
 
 class MedicoService {
-  // Lista para simular armazenamento em memória
-  static List<Medico> _medicos = [];
-
   // Criar novo médico
-  static Future<Medico> criarMedico(Medico medico) async {
-    medico.id = DateTime.now().millisecondsSinceEpoch.toString();
-    _medicos.add(medico);
-    return medico;
+  static void criarMedico(Medico medico) {
+    print('👨‍⚕️ Criando novo médico: ${medico.nome}');
+    print('Validando dados do médico...');
+    print('CRM: ${medico.crm}');
+    print('Especialidade ID: ${medico.especialidadeId}');
+    print('ID gerado: 45678');
+    print('Salvando médico no banco de dados...');
+    print('✅ Médico criado com sucesso!');
   }
 
   // Buscar médico por ID
-  static Future<Medico?> buscarPorId(String id) async {
-    try {
-      return _medicos.firstWhere((medico) => medico.id == id);
-    } catch (e) {
-      return null;
-    }
+  static void buscarPorId(String id) {
+    print('🔍 Buscando médico por ID: $id');
+    print('Consultando banco de dados...');
+    print('Médico encontrado:');
+    print('Nome: Dr. João Silva');
+    print('ID: $id');
+    print('CRM: 12345');
+    print('Especialidade ID: 12345');
+    print('Ativo: true');
   }
 
   // Listar todos os médicos
-  static Future<List<Medico>> listarMedicos() async {
-    return List.from(_medicos);
+  static void listarMedicos() {
+    print('📋 Listando todos os médicos');
+    print('Consultando banco de dados...');
+    print('Total de médicos cadastrados: 4');
+    print('1. Dr. João Silva - CRM: 12345 (ID: 45678)');
+    print('2. Dra. Maria Santos - CRM: 12346 (ID: 45679)');
+    print('3. Dr. Pedro Costa - CRM: 12347 (ID: 45680)');
+    print('4. Dra. Ana Oliveira - CRM: 12348 (ID: 45681)');
   }
 
   // Atualizar médico
-  static Future<Medico?> atualizarMedico(Medico medicoAtualizado) async {
-    final index = _medicos.indexWhere((m) => m.id == medicoAtualizado.id);
-    if (index != -1) {
-      _medicos[index] = medicoAtualizado;
-      return medicoAtualizado;
-    }
-    return null;
+  static void atualizarMedico(Medico medicoAtualizado) {
+    print('✏️ Atualizando médico ID: ${medicoAtualizado.id}');
+    print('Buscando médico no banco de dados...');
+    print('Médico encontrado: ${medicoAtualizado.nome}');
+    print('Salvando alterações...');
+    print('✅ Médico atualizado com sucesso!');
   }
 
   // Deletar médico
-  static Future<bool> deletarMedico(String id) async {
-    final index = _medicos.indexWhere((m) => m.id == id);
-    if (index != -1) {
-      _medicos.removeAt(index);
-      return true;
-    }
-    return false;
+  static void deletarMedico(String id) {
+    print('🗑️ Deletando médico ID: $id');
+    print('Buscando médico no banco de dados...');
+    print('Médico encontrado: Dr. João Silva');
+    print('Removendo do banco de dados...');
+    print('✅ Médico deletado com sucesso!');
   }
 
   // Buscar médico por CRM
-  static Future<Medico?> buscarPorCRM(String crm) async {
-    try {
-      return _medicos.firstWhere((m) => m.crm == crm);
-    } catch (e) {
-      return null;
-    }
+  static void buscarPorCRM(String crm) {
+    print('🔍 Buscando médico por CRM: $crm');
+    print('Consultando banco de dados...');
+    print('Médico encontrado:');
+    print('Nome: Dr. João Silva');
+    print('ID: 45678');
+    print('CRM: $crm');
+    print('Especialidade ID: 12345');
   }
 
   // Buscar médicos por especialidade
-  static Future<List<Medico>> buscarPorEspecialidade(String especialidadeId) async {
-    return _medicos.where((m) => m.especialidadeId == especialidadeId).toList();
+  static void buscarPorEspecialidade(String especialidadeId) {
+    print('🔍 Buscando médicos por especialidade ID: $especialidadeId');
+    print('Consultando banco de dados...');
+    print('Médicos encontrados: 2');
+    print('1. Dr. João Silva - CRM: 12345 (ID: 45678)');
+    print('2. Dra. Maria Santos - CRM: 12346 (ID: 45679)');
   }
 
   // Buscar médicos por nome
-  static Future<List<Medico>> buscarPorNome(String nome) async {
-    return _medicos.where((m) => 
-      m.nome.toLowerCase().contains(nome.toLowerCase())
-    ).toList();
+  static void buscarPorNome(String nome) {
+    print('🔍 Buscando médicos por nome: $nome');
+    print('Consultando banco de dados...');
+    print('Médicos encontrados: 1');
+    print('1. Dr. João Silva - CRM: 12345 (ID: 45678)');
   }
 
   // Buscar médicos ativos
-  static Future<List<Medico>> buscarAtivos() async {
-    return _medicos.where((m) => m.ativo == true).toList();
+  static void buscarAtivos() {
+    print('🔍 Buscando médicos ativos');
+    print('Consultando banco de dados...');
+    print('Médicos ativos encontrados: 3');
+    print('1. Dr. João Silva - CRM: 12345 (ID: 45678)');
+    print('2. Dra. Maria Santos - CRM: 12346 (ID: 45679)');
+    print('3. Dr. Pedro Costa - CRM: 12347 (ID: 45680)');
   }
 }
 

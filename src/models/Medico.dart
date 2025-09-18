@@ -1,8 +1,9 @@
 class Medico {
-  int? _idMedico;
-  String? _nomeCompleto;        // Obrigatório - identificação do médico
+  String? _id;
+  String? _nome;               // Obrigatório - identificação do médico
   String? _crm;                 // Obrigatório - registro profissional
-  List<String>? _especialidades; // Obrigatório - pelo menos uma especialidade
+  String? _especialidadeId;     // Obrigatório - especialidade do médico
+  bool? _ativo;                 // Obrigatório - status do médico
   String? _telefone;           // Opcional - pode não ter telefone
   String? _localAtendimento;   // Opcional - pode não ter local definido
   int? _agendaId;              // Opcional - pode não ter agenda
@@ -17,39 +18,35 @@ class Medico {
   }
 
   // Getters
-  int? get idMedico => _idMedico;
-  String? get nomeCompleto => _nomeCompleto;
+  String? get id => _id;
+  String? get nome => _nome;
   String? get crm => _crm;
-  List<String>? get especialidades => _especialidades;
+  String? get especialidadeId => _especialidadeId;
+  bool? get ativo => _ativo;
   String? get telefone => _telefone;
   String? get localAtendimento => _localAtendimento;
   int? get agendaId => _agendaId;
   double? get tempoPadraoConsulta => _tempoPadraoConsulta;
 
   // Setters
-  set idMedico(int? value) => _idMedico = value;
-  set nomeCompleto(String? value) => _nomeCompleto = value;
+  set id(String? value) => _id = value;
+  set nome(String? value) => _nome = value;
   set crm(String? value) => _crm = value;
-  set especialidades(List<String>? value) => _especialidades = value;
+  set especialidadeId(String? value) => _especialidadeId = value;
+  set ativo(bool? value) => _ativo = value;
   set telefone(String? value) => _telefone = value;
   set localAtendimento(String? value) => _localAtendimento = value;
   set agendaId(int? value) => _agendaId = value;
   set tempoPadraoConsulta(double? value) => _tempoPadraoConsulta = value;
 
-  // Método para adicionar especialidade
-  void adicionarEspecialidade(String especialidade) {
-    _especialidades ??= [];
-    _especialidades!.add(especialidade);
-  }
-
-  // Método para remover especialidade
-  void removerEspecialidade(String especialidade) {
-    _especialidades?.remove(especialidade);
+  // Método para definir especialidade
+  void definirEspecialidade(String especialidadeId) {
+    _especialidadeId = especialidadeId;
   }
 
   @override
   String toString() {
-    return 'Medico{idMedico: $_idMedico, nomeCompleto: $_nomeCompleto, crm: $_crm, especialidades: $_especialidades, telefone: $_telefone, localAtendimento: $_localAtendimento, agendaId: $_agendaId, tempoPadraoConsulta: $_tempoPadraoConsulta}';
+    return 'Medico{id: $_id, nome: $_nome, crm: $_crm, especialidadeId: $_especialidadeId, ativo: $_ativo, telefone: $_telefone, localAtendimento: $_localAtendimento, agendaId: $_agendaId, tempoPadraoConsulta: $_tempoPadraoConsulta}';
   }
 }
 
@@ -57,13 +54,13 @@ class Medico {
 class MedicoBuilder {
   final Medico _medico = Medico._();
 
-  MedicoBuilder idMedico(int? idMedico) {
-    _medico._idMedico = idMedico;
+  MedicoBuilder id(String? id) {
+    _medico._id = id;
     return this;
   }
 
-  MedicoBuilder nomeCompleto(String? nomeCompleto) {
-    _medico._nomeCompleto = nomeCompleto;
+  MedicoBuilder nome(String? nome) {
+    _medico._nome = nome;
     return this;
   }
 
@@ -72,8 +69,13 @@ class MedicoBuilder {
     return this;
   }
 
-  MedicoBuilder especialidades(List<String>? especialidades) {
-    _medico._especialidades = especialidades;
+  MedicoBuilder especialidadeId(String? especialidadeId) {
+    _medico._especialidadeId = especialidadeId;
+    return this;
+  }
+
+  MedicoBuilder ativo(bool? ativo) {
+    _medico._ativo = ativo;
     return this;
   }
 
@@ -99,14 +101,17 @@ class MedicoBuilder {
 
   Medico build() {
     // Validações obrigatórias
-    if (_medico._nomeCompleto == null || _medico._nomeCompleto!.isEmpty) {
-      throw ArgumentError('Nome completo é obrigatório');
+    if (_medico._nome == null || _medico._nome!.isEmpty) {
+      throw ArgumentError('Nome é obrigatório');
     }
     if (_medico._crm == null || _medico._crm!.isEmpty) {
       throw ArgumentError('CRM é obrigatório');
     }
-    if (_medico._especialidades == null || _medico._especialidades!.isEmpty) {
-      throw ArgumentError('Pelo menos uma especialidade é obrigatória');
+    if (_medico._especialidadeId == null || _medico._especialidadeId!.isEmpty) {
+      throw ArgumentError('Especialidade é obrigatória');
+    }
+    if (_medico._ativo == null) {
+      _medico._ativo = true; // Padrão ativo
     }
     
     return _medico;

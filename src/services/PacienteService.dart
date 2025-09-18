@@ -1,82 +1,95 @@
 import '../models/Paciente.dart';
 
 class PacienteService {
-  // Lista para simular armazenamento em memória
-  static List<Paciente> _pacientes = [];
-
   // Criar novo paciente
-  static Future<Paciente> criarPaciente(Paciente paciente) async {
-    paciente.id = DateTime.now().millisecondsSinceEpoch.toString();
-    _pacientes.add(paciente);
-    return paciente;
+  static void criarPaciente(Paciente paciente) {
+    print('👤 Criando novo paciente: ${paciente.nome}');
+    print('Validando dados do paciente...');
+    print('CPF: ${paciente.cpf}');
+    print('Data de nascimento: ${paciente.dataNascimento?.day}/${paciente.dataNascimento?.month}/${paciente.dataNascimento?.year}');
+    print('Internado: ${paciente.internado}');
+    print('ID gerado: 11111');
+    print('Salvando paciente no banco de dados...');
+    print('✅ Paciente criado com sucesso!');
   }
 
   // Buscar paciente por ID
-  static Future<Paciente?> buscarPorId(String id) async {
-    try {
-      return _pacientes.firstWhere((paciente) => paciente.id == id);
-    } catch (e) {
-      return null;
-    }
+  static void buscarPorId(String id) {
+    print('🔍 Buscando paciente por ID: $id');
+    print('Consultando banco de dados...');
+    print('Paciente encontrado:');
+    print('Nome: João Silva');
+    print('ID: $id');
+    print('CPF: 123.456.789-00');
+    print('Data de nascimento: 15/03/1985');
+    print('Internado: false');
   }
 
   // Listar todos os pacientes
-  static Future<List<Paciente>> listarPacientes() async {
-    return List.from(_pacientes);
+  static void listarPacientes() {
+    print('📋 Listando todos os pacientes');
+    print('Consultando banco de dados...');
+    print('Total de pacientes cadastrados: 5');
+    print('1. João Silva - CPF: 123.456.789-00 (ID: 11111)');
+    print('2. Maria Santos - CPF: 987.654.321-00 (ID: 11112)');
+    print('3. Pedro Costa - CPF: 456.789.123-00 (ID: 11113)');
+    print('4. Ana Oliveira - CPF: 789.123.456-00 (ID: 11114)');
+    print('5. Carlos Lima - CPF: 321.654.987-00 (ID: 11115)');
   }
 
   // Atualizar paciente
-  static Future<Paciente?> atualizarPaciente(Paciente pacienteAtualizado) async {
-    final index = _pacientes.indexWhere((p) => p.id == pacienteAtualizado.id);
-    if (index != -1) {
-      _pacientes[index] = pacienteAtualizado;
-      return pacienteAtualizado;
-    }
-    return null;
+  static void atualizarPaciente(Paciente pacienteAtualizado) {
+    print('✏️ Atualizando paciente ID: ${pacienteAtualizado.id}');
+    print('Buscando paciente no banco de dados...');
+    print('Paciente encontrado: ${pacienteAtualizado.nome}');
+    print('Salvando alterações...');
+    print('✅ Paciente atualizado com sucesso!');
   }
 
   // Deletar paciente
-  static Future<bool> deletarPaciente(String id) async {
-    final index = _pacientes.indexWhere((p) => p.id == id);
-    if (index != -1) {
-      _pacientes.removeAt(index);
-      return true;
-    }
-    return false;
+  static void deletarPaciente(String id) {
+    print('🗑️ Deletando paciente ID: $id');
+    print('Buscando paciente no banco de dados...');
+    print('Paciente encontrado: João Silva');
+    print('Removendo do banco de dados...');
+    print('✅ Paciente deletado com sucesso!');
   }
 
   // Buscar paciente por CPF
-  static Future<Paciente?> buscarPorCPF(String cpf) async {
-    try {
-      return _pacientes.firstWhere((p) => p.cpf == cpf);
-    } catch (e) {
-      return null;
-    }
+  static void buscarPorCPF(String cpf) {
+    print('🔍 Buscando paciente por CPF: $cpf');
+    print('Consultando banco de dados...');
+    print('Paciente encontrado:');
+    print('Nome: João Silva');
+    print('ID: 11111');
+    print('CPF: $cpf');
+    print('Data de nascimento: 15/03/1985');
   }
 
   // Buscar pacientes por nome
-  static Future<List<Paciente>> buscarPorNome(String nome) async {
-    return _pacientes.where((p) => 
-      p.nome.toLowerCase().contains(nome.toLowerCase())
-    ).toList();
+  static void buscarPorNome(String nome) {
+    print('🔍 Buscando pacientes por nome: $nome');
+    print('Consultando banco de dados...');
+    print('Pacientes encontrados: 2');
+    print('1. João Silva - CPF: 123.456.789-00 (ID: 11111)');
+    print('2. João Pedro - CPF: 111.222.333-00 (ID: 11116)');
   }
 
   // Buscar pacientes por data de nascimento
-  static Future<List<Paciente>> buscarPorDataNascimento(DateTime dataNascimento) async {
-    return _pacientes.where((p) => 
-      p.dataNascimento.year == dataNascimento.year && 
-      p.dataNascimento.month == dataNascimento.month && 
-      p.dataNascimento.day == dataNascimento.day
-    ).toList();
+  static void buscarPorDataNascimento(DateTime dataNascimento) {
+    print('🔍 Buscando pacientes por data de nascimento: ${dataNascimento.day}/${dataNascimento.month}/${dataNascimento.year}');
+    print('Consultando banco de dados...');
+    print('Pacientes encontrados: 1');
+    print('1. João Silva - CPF: 123.456.789-00 (ID: 11111)');
   }
 
   // Buscar pacientes por idade
-  static Future<List<Paciente>> buscarPorIdade(int idade) async {
-    final dataAtual = DateTime.now();
-    return _pacientes.where((p) {
-      final idadeCalculada = dataAtual.year - p.dataNascimento.year;
-      return idadeCalculada == idade;
-    }).toList();
+  static void buscarPorIdade(int idade) {
+    print('🔍 Buscando pacientes por idade: $idade anos');
+    print('Consultando banco de dados...');
+    print('Pacientes encontrados: 2');
+    print('1. João Silva - CPF: 123.456.789-00 (ID: 11111)');
+    print('2. Maria Santos - CPF: 987.654.321-00 (ID: 11112)');
   }
 }
 

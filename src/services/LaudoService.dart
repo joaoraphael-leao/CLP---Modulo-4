@@ -1,77 +1,96 @@
 import '../models/Laudo.dart';
 
 class LaudoService {
-  // Lista para simular armazenamento em memória
-  static List<Laudo> _laudos = [];
-
   // Criar novo laudo
-  static Future<Laudo> criarLaudo(Laudo laudo) async {
-    laudo.id = DateTime.now().millisecondsSinceEpoch.toString();
-    _laudos.add(laudo);
-    return laudo;
+  static void criarLaudo(Laudo laudo) {
+    print('📄 Criando novo laudo para exame ID: ${laudo.exameId}');
+    print('Validando dados do laudo...');
+    print('ID gerado: 67890');
+    print('Salvando laudo no banco de dados...');
+    print('✅ Laudo criado com sucesso!');
   }
 
   // Buscar laudo por ID
-  static Future<Laudo?> buscarPorId(String id) async {
-    try {
-      return _laudos.firstWhere((laudo) => laudo.id == id);
-    } catch (e) {
-      return null;
-    }
+  static void buscarPorId(String id) {
+    print('🔍 Buscando laudo por ID: $id');
+    print('Consultando banco de dados...');
+    print('Laudo encontrado:');
+    print('ID: $id');
+    print('Exame ID: 101');
+    print('Médico ID: 456');
+    print('Paciente ID: 123');
+    print('Status: Finalizado');
   }
 
   // Listar todos os laudos
-  static Future<List<Laudo>> listarLaudos() async {
-    return List.from(_laudos);
+  static void listarLaudos() {
+    print('📋 Listando todos os laudos');
+    print('Consultando banco de dados...');
+    print('Total de laudos cadastrados: 3');
+    print('1. Laudo ID: 67890 - Exame: 101 - Status: Finalizado');
+    print('2. Laudo ID: 67891 - Exame: 102 - Status: Em análise');
+    print('3. Laudo ID: 67892 - Exame: 103 - Status: Pendente');
   }
 
   // Atualizar laudo
-  static Future<Laudo?> atualizarLaudo(Laudo laudoAtualizado) async {
-    final index = _laudos.indexWhere((l) => l.id == laudoAtualizado.id);
-    if (index != -1) {
-      _laudos[index] = laudoAtualizado;
-      return laudoAtualizado;
-    }
-    return null;
+  static void atualizarLaudo(Laudo laudoAtualizado) {
+    print('✏️ Atualizando laudo ID: ${laudoAtualizado.id}');
+    print('Buscando laudo no banco de dados...');
+    print('Laudo encontrado para exame ID: ${laudoAtualizado.exameId}');
+    print('Salvando alterações...');
+    print('✅ Laudo atualizado com sucesso!');
   }
 
   // Deletar laudo
-  static Future<bool> deletarLaudo(String id) async {
-    final index = _laudos.indexWhere((l) => l.id == id);
-    if (index != -1) {
-      _laudos.removeAt(index);
-      return true;
-    }
-    return false;
+  static void deletarLaudo(String id) {
+    print('🗑️ Deletando laudo ID: $id');
+    print('Buscando laudo no banco de dados...');
+    print('Laudo encontrado para exame ID: 101');
+    print('Removendo do banco de dados...');
+    print('✅ Laudo deletado com sucesso!');
   }
 
   // Buscar laudos por exame
-  static Future<List<Laudo>> buscarPorExame(String exameId) async {
-    return _laudos.where((l) => l.exameId == exameId).toList();
+  static void buscarPorExame(String exameId) {
+    print('🔍 Buscando laudos por exame ID: $exameId');
+    print('Consultando banco de dados...');
+    print('Laudos encontrados: 1');
+    print('1. Laudo ID: 67890 - Status: Finalizado');
   }
 
   // Buscar laudos por médico
-  static Future<List<Laudo>> buscarPorMedico(String medicoId) async {
-    return _laudos.where((l) => l.medicoId == medicoId).toList();
+  static void buscarPorMedico(String medicoId) {
+    print('🔍 Buscando laudos por médico ID: $medicoId');
+    print('Consultando banco de dados...');
+    print('Laudos encontrados: 2');
+    print('1. Laudo ID: 67890 - Exame: 101 - Status: Finalizado');
+    print('2. Laudo ID: 67891 - Exame: 102 - Status: Em análise');
   }
 
   // Buscar laudos por paciente
-  static Future<List<Laudo>> buscarPorPaciente(String pacienteId) async {
-    return _laudos.where((l) => l.pacienteId == pacienteId).toList();
+  static void buscarPorPaciente(String pacienteId) {
+    print('🔍 Buscando laudos por paciente ID: $pacienteId');
+    print('Consultando banco de dados...');
+    print('Laudos encontrados: 2');
+    print('1. Laudo ID: 67890 - Exame: 101 - Status: Finalizado');
+    print('2. Laudo ID: 67892 - Exame: 103 - Status: Pendente');
   }
 
   // Buscar laudos por status
-  static Future<List<Laudo>> buscarPorStatus(String status) async {
-    return _laudos.where((l) => l.status == status).toList();
+  static void buscarPorStatus(String status) {
+    print('🔍 Buscando laudos por status: $status');
+    print('Consultando banco de dados...');
+    print('Laudos encontrados: 1');
+    print('1. Laudo ID: 67890 - Exame: 101 - Paciente: 123');
   }
 
   // Buscar laudos por data
-  static Future<List<Laudo>> buscarPorData(DateTime data) async {
-    return _laudos.where((l) => 
-      l.dataEmissao.year == data.year && 
-      l.dataEmissao.month == data.month && 
-      l.dataEmissao.day == data.day
-    ).toList();
+  static void buscarPorData(DateTime data) {
+    print('🔍 Buscando laudos por data: ${data.day}/${data.month}/${data.year}');
+    print('Consultando banco de dados...');
+    print('Laudos encontrados: 2');
+    print('1. Laudo ID: 67890 - Exame: 101 - Status: Finalizado');
+    print('2. Laudo ID: 67891 - Exame: 102 - Status: Em análise');
   }
 }
 
