@@ -1,5 +1,4 @@
 class Laudo {
-  String? _id;
   String? _descricao;          // Obrigatório - laudo deve ter descrição
   DateTime? _dataEmissao;      // Obrigatório - sempre tem data de emissão
   String? _medicoId;           // Obrigatório - laudo deve ter médico responsável
@@ -16,7 +15,6 @@ class Laudo {
   }
 
   // Getters
-  String? get id => _id;
   String? get descricao => _descricao;
   DateTime? get dataEmissao => _dataEmissao;
   String? get medicoId => _medicoId;
@@ -25,7 +23,6 @@ class Laudo {
   String? get status => _status;
 
   // Setters
-  set id(String? value) => _id = value;
   set descricao(String? value) => _descricao = value;
   set dataEmissao(DateTime? value) => _dataEmissao = value;
   set medicoId(String? value) => _medicoId = value;
@@ -35,18 +32,13 @@ class Laudo {
 
   @override
   String toString() {
-    return 'Laudo{id: $_id, descricao: $_descricao, dataEmissao: $_dataEmissao, medicoId: $_medicoId, exameId: $_exameId, pacienteId: $_pacienteId, status: $_status}';
+    return 'descricao: $_descricao, dataEmissao: $_dataEmissao, medicoId: $_medicoId, exameId: $_exameId, pacienteId: $_pacienteId, status: $_status}';
   }
 }
 
 // Builder class para Laudo
 class LaudoBuilder {
   final Laudo _laudo = Laudo._();
-
-  LaudoBuilder id(String? id) {
-    _laudo._id = id;
-    return this;
-  }
 
   LaudoBuilder descricao(String? descricao) {
     _laudo._descricao = descricao;

@@ -1,6 +1,5 @@
 class Especialidade {
   // Underline torna Publico
-  String? _id;
   String? _nome;
   String? _descricao;
   String? _requisitos;
@@ -14,31 +13,24 @@ class Especialidade {
   }
 
   // Getters
-  String? get id => _id;
   String? get nome => _nome;
   String? get descricao => _descricao;
   String? get requisitos => _requisitos;
 
   // Setters
-  set id(String? value) => _id = value;
   set nome(String? value) => _nome = value;
   set descricao(String? value) => _descricao = value;
   set requisitos(String? value) => _requisitos = value;
 
   @override
   String toString() {
-    return 'Especialidade{id: $_id, nome: $_nome, descricao: $_descricao, requisitos: $_requisitos}';
+    return 'Especialidade{nome: $_nome, descricao: $_descricao, requisitos: $_requisitos}';
   }
 }
 
 // Builder class para Especialidade
 class EspecialidadeBuilder {
   final Especialidade _especialidade = Especialidade._();
-
-  EspecialidadeBuilder id(String? id) {
-    _especialidade._id = id;
-    return this;
-  }
 
   EspecialidadeBuilder nome(String? nome) {
     _especialidade._nome = nome;

@@ -1,5 +1,4 @@
 class Paciente {
-  String? _id;
   String? _nome;               // Obrigatório - identificação do paciente
   DateTime? _dataNascimento;    // Obrigatório - idade é importante para medicina
   String? _cpf;                 // Obrigatório - identificação única
@@ -17,7 +16,6 @@ class Paciente {
   }
 
   // Getters
-  String? get id => _id;
   String? get nome => _nome;
   DateTime? get dataNascimento => _dataNascimento;
   String? get cpf => _cpf;
@@ -27,7 +25,6 @@ class Paciente {
   bool? get internado => _internado;
 
   // Setters
-  set id(String? value) => _id = value;
   set nome(String? value) => _nome = value;
   set dataNascimento(DateTime? value) => _dataNascimento = value;
   set cpf(String? value) => _cpf = value;
@@ -53,18 +50,13 @@ class Paciente {
 
   @override
   String toString() {
-    return 'Paciente{id: $_id, nome: $_nome, dataNascimento: $_dataNascimento, cpf: $_cpf, email: $_email, telefone: $_telefone, endereco: $_endereco, internado: $_internado}';
+    return 'Paciente{nome: $_nome, dataNascimento: $_dataNascimento, cpf: $_cpf, email: $_email, telefone: $_telefone, endereco: $_endereco, internado: $_internado}';
   }
 }
 
 // Builder class para Paciente
 class PacienteBuilder {
   final Paciente _paciente = Paciente._();
-
-  PacienteBuilder id(String? id) {
-    _paciente._id = id;
-    return this;
-  }
 
   PacienteBuilder nome(String? nome) {
     _paciente._nome = nome;

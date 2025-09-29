@@ -1,0 +1,21 @@
+name: clp_modulo_4
+description: Sistema de gestão médica - Módulo 4
+version: 1.0.0
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  postgres: ^3.0.0
+  
+  json_annotation: ^4.8.1
+  
+  logging: ^1.2.0
+
+  get_it: ^7.6.4
+  
+  injectable: ^2.3.2
+
+dev_dependencies:
+  json_serializable: ^6.7.1
+  build_runner: ^2.4.7

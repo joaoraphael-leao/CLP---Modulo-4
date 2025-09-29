@@ -1,5 +1,4 @@
 class Medico {
-  String? _id;
   String? _nome;               // Obrigatório - identificação do médico
   String? _crm;                 // Obrigatório - registro profissional
   String? _especialidadeId;     // Obrigatório - especialidade do médico
@@ -18,7 +17,6 @@ class Medico {
   }
 
   // Getters
-  String? get id => _id;
   String? get nome => _nome;
   String? get crm => _crm;
   String? get especialidadeId => _especialidadeId;
@@ -29,7 +27,6 @@ class Medico {
   double? get tempoPadraoConsulta => _tempoPadraoConsulta;
 
   // Setters
-  set id(String? value) => _id = value;
   set nome(String? value) => _nome = value;
   set crm(String? value) => _crm = value;
   set especialidadeId(String? value) => _especialidadeId = value;
@@ -46,18 +43,13 @@ class Medico {
 
   @override
   String toString() {
-    return 'Medico{id: $_id, nome: $_nome, crm: $_crm, especialidadeId: $_especialidadeId, ativo: $_ativo, telefone: $_telefone, localAtendimento: $_localAtendimento, agendaId: $_agendaId, tempoPadraoConsulta: $_tempoPadraoConsulta}';
+    return 'Medico{nome: $_nome, crm: $_crm, especialidadeId: $_especialidadeId, ativo: $_ativo, telefone: $_telefone, localAtendimento: $_localAtendimento, agendaId: $_agendaId, tempoPadraoConsulta: $_tempoPadraoConsulta}';
   }
 }
 
 // Builder class para Medico
 class MedicoBuilder {
   final Medico _medico = Medico._();
-
-  MedicoBuilder id(String? id) {
-    _medico._id = id;
-    return this;
-  }
 
   MedicoBuilder nome(String? nome) {
     _medico._nome = nome;

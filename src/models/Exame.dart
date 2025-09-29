@@ -1,5 +1,4 @@
 class Exame {
-  int? _idExame;
   int? _idMedico;              // Obrigatório - exame deve ter médico solicitante
   int? _idPaciente;            // Obrigatório - exame deve ter paciente
   String? _tipoExame;          // Obrigatório - exame deve ter tipo
@@ -16,7 +15,6 @@ class Exame {
   }
 
   // Getters
-  int? get idExame => _idExame;
   int? get idMedico => _idMedico;
   int? get idPaciente => _idPaciente;
   String? get tipoExame => _tipoExame;
@@ -25,7 +23,6 @@ class Exame {
   String? get resultadoExame => _resultadoExame;
 
   // Setters
-  set idExame(int? value) => _idExame = value;
   set idMedico(int? value) => _idMedico = value;
   set idPaciente(int? value) => _idPaciente = value;
   set tipoExame(String? value) => _tipoExame = value;
@@ -35,18 +32,13 @@ class Exame {
 
   @override
   String toString() {
-    return 'Exame{idExame: $_idExame, idMedico: $_idMedico, idPaciente: $_idPaciente, tipoExame: $_tipoExame, dataExame: $_dataExame, precisaDeImagem: $_precisaDeImagem, resultadoExame: $_resultadoExame}';
+    return 'Exame{idMedico: $_idMedico, idPaciente: $_idPaciente, tipoExame: $_tipoExame, dataExame: $_dataExame, precisaDeImagem: $_precisaDeImagem, resultadoExame: $_resultadoExame}';
   }
 }
 
 // Builder class para Exame
 class ExameBuilder {
   final Exame _exame = Exame._();
-
-  ExameBuilder idExame(int? idExame) {
-    _exame._idExame = idExame;
-    return this;
-  }
 
   ExameBuilder idMedico(int? idMedico) {
     _exame._idMedico = idMedico;

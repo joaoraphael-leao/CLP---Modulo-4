@@ -1,5 +1,4 @@
 class Consulta {
-  int? _idConsulta;
   DateTime? _dataConsulta;      // Obrigatório - consulta deve ter data
   int? _idPaciente;            // Obrigatório - consulta deve ter paciente
   int? _idMedico;              // Obrigatório - consulta deve ter médico
@@ -18,7 +17,6 @@ class Consulta {
   }
 
   // Getters
-  int? get idConsulta => _idConsulta;
   DateTime? get dataConsulta => _dataConsulta;
   int? get idPaciente => _idPaciente;
   int? get idMedico => _idMedico;
@@ -29,7 +27,6 @@ class Consulta {
   List<String>? get examesNecessarios => _examesNecessarios;
 
   // Setters
-  set idConsulta(int? value) => _idConsulta = value;
   set dataConsulta(DateTime? value) => _dataConsulta = value;
   set idPaciente(int? value) => _idPaciente = value;
   set idMedico(int? value) => _idMedico = value;
@@ -52,18 +49,13 @@ class Consulta {
 
   @override
   String toString() {
-    return 'Consulta{idConsulta: $_idConsulta, dataConsulta: $_dataConsulta, idPaciente: $_idPaciente, idMedico: $_idMedico, sintomas: $_sintomas, diagnostico: $_diagnostico, prescricao: $_prescricao, dataCriacao: $_dataCriacao, examesNecessarios: $_examesNecessarios}';
+    return 'Consulta{dataConsulta: $_dataConsulta, idPaciente: $_idPaciente, idMedico: $_idMedico, sintomas: $_sintomas, diagnostico: $_diagnostico, prescricao: $_prescricao, dataCriacao: $_dataCriacao, examesNecessarios: $_examesNecessarios}';
   }
 }
 
 // Builder class para Consulta
 class ConsultaBuilder {
   final Consulta _consulta = Consulta._();
-
-  ConsultaBuilder idConsulta(int? idConsulta) {
-    _consulta._idConsulta = idConsulta;
-    return this;
-  }
 
   ConsultaBuilder dataConsulta(DateTime? dataConsulta) {
     _consulta._dataConsulta = dataConsulta;

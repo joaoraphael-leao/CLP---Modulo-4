@@ -1,5 +1,4 @@
 class Prontuario {
-  int? _idProntuario;
   DateTime? _dataCriacao;      // Obrigatório - sempre tem data de criação
   String? _observacoesGerais; // Opcional - pode não ter observações
   int? _idPaciente;           // Obrigatório - prontuário deve ter paciente
@@ -18,7 +17,6 @@ class Prontuario {
   }
 
   // Getters
-  int? get idProntuario => _idProntuario;
   DateTime? get dataCriacao => _dataCriacao;
   String? get observacoesGerais => _observacoesGerais;
   int? get idPaciente => _idPaciente;
@@ -29,7 +27,6 @@ class Prontuario {
   String? get pressaoArterial => _pressaoArterial;
 
   // Setters
-  set idProntuario(int? value) => _idProntuario = value;
   set dataCriacao(DateTime? value) => _dataCriacao = value;
   set observacoesGerais(String? value) => _observacoesGerais = value;
   set idPaciente(int? value) => _idPaciente = value;
@@ -41,18 +38,13 @@ class Prontuario {
 
   @override
   String toString() {
-    return 'Prontuario{idProntuario: $_idProntuario, dataCriacao: $_dataCriacao, observacoesGerais: $_observacoesGerais, idPaciente: $_idPaciente, idMedico: $_idMedico, historicoDoencas: $_historicoDoencas, alergias: $_alergias, medicacoesAtuais: $_medicacoesAtuais, pressaoArterial: $_pressaoArterial}';
+    return 'Prontuario{dataCriacao: $_dataCriacao, observacoesGerais: $_observacoesGerais, idPaciente: $_idPaciente, idMedico: $_idMedico, historicoDoencas: $_historicoDoencas, alergias: $_alergias, medicacoesAtuais: $_medicacoesAtuais, pressaoArterial: $_pressaoArterial}';
   }
 }
 
 // Builder class para Prontuario
 class ProntuarioBuilder {
   final Prontuario _prontuario = Prontuario._();
-
-  ProntuarioBuilder idProntuario(int? idProntuario) {
-    _prontuario._idProntuario = idProntuario;
-    return this;
-  }
 
   ProntuarioBuilder dataCriacao(DateTime? dataCriacao) {
     _prontuario._dataCriacao = dataCriacao;
