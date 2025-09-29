@@ -66,18 +66,13 @@ class AlertaCritico extends Notificacao {
 
   @override
   String toString() {
-    return 'AlertaCritico{id: ${super.id}, titulo: ${super.titulo}, conteudo: ${super.conteudo}, idPaciente: ${super.idPaciente}, idMedico: ${super.idMedico}, acaoRecomendada: $_acaoRecomendada, urgencia: $_urgencia}';
+    return 'AlertaCritico{titulo: ${super.titulo}, conteudo: ${super.conteudo}, idPaciente: ${super.idPaciente}, idMedico: ${super.idMedico}, acaoRecomendada: $_acaoRecomendada, urgencia: $_urgencia}';
   }
 }
 
 // Builder class para AlertaCritico
 class AlertaCriticoBuilder {
   final AlertaCritico _alertaCritico = AlertaCritico._();
-
-  AlertaCriticoBuilder id(int? id) {
-    _alertaCritico.id = id;
-    return this;
-  }
 
   AlertaCriticoBuilder titulo(String? titulo) {
     _alertaCritico.titulo = titulo;
